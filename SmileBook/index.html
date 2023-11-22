@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileBook</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+    <div class="container-formulario1">
+        <div class="logo-inicio">
+            <img src="Imagenes/SmileBook.png" alt="Logo de tu empresa">
+        </div>
+        <form action="http://192.168.100.13/Smilebook/Login.php" method="post">
+            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="password" name="contraseña" placeholder="Contraseña" required>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+    </div>
+</body>
+
+</html>

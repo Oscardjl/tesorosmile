@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileBook</title>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+
+
+    <style>
+        .seccion {
+            display: none;
+        }
+        
+        #pacientes {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menú lateral -->
+        <aside class="menu-lateral">
+            <img src="Imagenes/SmileBook.png" alt="Logo de tu empresa">
+            <ul>
+                <li><a href="#pacientes" onclick="mostrarSeccion('pacientes')">Pacientes</a></li>
+                <li><a href="#citas" onclick="mostrarSeccion('citas')">Citas</a></li>
+                <li><a href="#cancelaciones" onclick="mostrarSeccion('cancelaciones')">Cancelaciones</a></li>
+                <li><a href="#inventario" onclick="mostrarSeccion('inventario')">Inventario</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="contenido-principal">
+            <!-- Sección de Pacientes -->
+            <section id="pacientes" class="seccion">
+                <!-- Contenido de la sección de Pacientes -->
+                <h1>Lista de Pacientes</h1>
+                <div class="buscador">
+                    <input type="text" placeholder="Buscar">
+                    <a href="/Pacientes.html" button id="mostrarAgregarPaciente">Agregar Paciente</button> </a>
+                    <div class="invent" id="agregarPaciente" style="display: none;">
+                        <h2>Agregar Producto</h2>
+                        <form action="http://192.168.100.13/Smilebook/Addpacientes.php" method="POST" id="agregarProductoForm">
+                            <label for="Nombre">Nombre:</label>
+                            <input type="text" id="Nombre" name="Nombre" required>
+                            <label for="Edad">Edad:</label>
+                            <input type="number" id="Edad" name="Edad" required>
+                            <label for="Fecha">Fecha:</label>
+                            <input type="date" id="Fecha" name="Fecha" required>
+                            <div style="text-align: center;">
+                                <button type="submit">Agregar Paciente</button>
+                                <button type="button" onclick="cerrarFormularioPacientes()">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="lista-pacientes">
+                    <!-- Aquí se mostrarán los pacientes -->
+                    <table id="tabla-pacientes">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sección de Citas -->
+            <section id="citas" class="seccion">
+                <!-- Contenido de la sección de Citas -->
+                <div id="calendario" style="width: 100%; min-height: 100%;"></div>
+            </section>
+
+            <!-- Sección de Cancelaciones (similar al ejemplo anterior) -->
+            <section id="cancelaciones" class="seccion">
+                <!-- Contenido de la sección de Cancelaciones -->
+                <h1>holaaaaa</h1>
+            </section>
+
+            <!-- Sección de Inventario (similar al ejemplo anterior) -->
+            <section id="inventario" class="seccion">
+                <!-- Contenido de la sección de Inventario -->
+                <center>
+                    <h1>Inventario</h1>
+                </center>
+                <h2>Listado de Productos</h2>
+                <div class="lista-inventario">
+                    <!-- Aquí se mostrarán los pacientes -->
+                    <table id="tabla-inventario">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre del producto</th>
+                            <th>Cantidad</th>
+                            <th>Estado</th>
+                            <th>Edad</th>
+                            <th>Compras</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Botón para agregar información a la tabla -->
+                <button id="mostrarAgregar" onclick="abrirFormulario()">Agregar Producto</button>
+
+                <!-- Botón para actualizar la información de la tabla -->
+                <button id="actualizarTabla">Actualizar Tabla</button>
+
+                <!-- Formulario de Agregar Producto (inicialmente oculto) -->
+                <div class="invent" id="agregarProducto" style="display: none;">
+                    <h2>Agregar Producto</h2>
+                    <form action="http://192.168.100.13/Smilebook/agregar.php" method="POST" id="agregarProductoForm">
+                        <label for="nombre_producto">Nombre del Producto:</label>
+                        <input type="text" id="nombre_producto" name="nombre_producto" required>
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" required>
+                        <label for="estado">Estado:</label>
+                        <input type="text" id="estado" name="estado" required>
+                        <label for="compras">Compras:</label>
+                        <input type="text" id="compras" name="compras" required>
+                        <div style="text-align: center;">
+                            <button type="submit">Agregar Producto</button>
+                            <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+
+            <script>
+                function mostrarSeccion(seccionId) {
+                    // Oculta todas las secciones
+                    const secciones = document.querySelectorAll('.seccion');
+                    secciones.forEach(seccion => {
+                        seccion.style.display = 'none';
+                    });
+
+                    // Muestra la sección correspondiente
+                    const seccionAMostrar = document.getElementById(seccionId);
+                    seccionAMostrar.style.display = 'block';
+                }
+
+
+                function abrirFormulario() {
+                    const formulario = document.getElementById('agregarProducto');
+                    formulario.style.display = 'block';
+                }
+
+                function cerrarFormulario() {
+                    const formulario = document.getElementById('agregarProducto');
+                    formulario.style.display = 'none';
+                }
+
+                // Utiliza AJAX para llamar a tu script PHP
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // Manipula el DOM para mostrar los resultados en la tabla
+                        document.getElementById("tabla-pacientes").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "http://192.168.100.13/Smilebook/actualizar_tabla.php/", true);
+                xhttp.send();
+                // Utiliza AJAX para llamar a tu script PHP
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // Manipula el DOM para mostrar los resultados en la tabla
+                        document.getElementById("tabla-inventario").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "http://192.168.100.13/Smilebook/mostrar_inventario.php/", true);
+                xhttp.send();
+
+                // Inicializar FullCalendar
+                document.addEventListener('DOMContentLoaded', function() {
+                    var calendarEl = document.getElementById('calendario');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        locale: 'es',
+                        headerToolbar: {
+                            left: 'prev, next, today',
+                            center: 'title',
+                            right: 'dayGridMonth, timeGridWeek, timeGridDay, listWeek'
+                        },
+                        selectable: true,
+                        events: 'http://192.168.100.13/Smilebook/get_citas.php', // Agrega esta línea para obtener las citas existentes
+                        select: function(info) {
+                            var pacienteId = prompt('ID del paciente:');
+                            if (pacienteId) {
+                                calendar.addEvent({
+                                    title: pacienteId,
+                                    start: info.startStr,
+                                    end: info.endStr,
+                                    allDay: info.allDay
+                                });
+
+                                agregarCita(pacienteId, info.startStr, info.endStr);
+                            }
+                            calendar.unselect();
+                        },
+                        eventClick: function(info) {
+                            if (confirm('¿Seguro que quieres eliminar esta cita?')) {
+                                info.event.remove();
+                                eliminarCita(info.event.title);
+                            }
+                        }
+                    });
+
+                    calendar.render();
+
+                    function agregarCita(pacienteId, start, end) {
+                        fetch('http://192.168.100.13/Smilebook/agregar_cita.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    pacienteId: pacienteId,
+                                    start: start,
+                                    end: end
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => console.log(data))
+                            .catch(error => console.error('Error:', error));
+                    }
+
+                    function eliminarCita(pacienteId) {
+                        fetch('http://192.168.100.13/Smilebook/eliminar_cita.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    pacienteId: pacienteId
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => console.log(data))
+                            .catch(error => console.error('Error:', error));
+                    }
+                });
+            </script>
+        </main>
+
+</body>
+
+</html>

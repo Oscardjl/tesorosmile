@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Historia Clínica Dental</title>
+    <link rel="stylesheet" type="text/css" href="EstilosPacientes.css">
+</head>
+
+<body>
+    <center>
+        <h1>Historia Clínica Dental</h1>
+    </center>
+
+    <form action="http://192.168.100.13/Smilebook/conect2.php" method="post">
+        <label for="fecha_elaboracion">Fecha de Elaboración del Expediente:</label>
+        <input type="date" name="fecha_elaboracion" id="fecha_elaboracion" required>
+
+        <h2>Ficha de Identificación:</h2>
+        <label for="nombres">Nombre(s):</label>
+        <input type="text" name="nombres" id="nombres" required>
+
+        <label for="apellido_paterno">Apellido Paterno:</label>
+        <input type="text" name="apellido_paterno" id="apellido_paterno" required>
+
+        <label for="apellido_materno">Apellido Materno:</label>
+        <input type="text" name="apellido_materno" id="apellido_materno"><br>
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required><br>
+
+        <label>Género:</label>
+        <input type="radio" name="genero" value="Masculino" id="genero_masculino" required>
+        <label for="genero_masculino">Masculino</label>
+        <input type="radio" name="genero" value="Femenino" id="genero_femenino" required>
+        <label for="genero_femenino">Femenino</label><br>
+
+        <label for="telefono_fijo">Teléfono Fijo:</label>
+        <input type="tel" name="telefono_fijo" id="telefono_fijo">
+
+        <label for="telefono_movil">Teléfono Móvil:</label>
+        <input type="tel" name="telefono_movil" id="telefono_movil"><br>
+
+        <label for="domicilio">Domicilio:</label>
+        <input type="text" name="domicilio" id="domicilio">
+
+        <label for="codigo_postal">Código Postal:</label>
+        <input type="text" name="codigo_postal" id="codigo_postal"><br>
+
+        <label for="estado_civil">Estado Civil:</label>
+        <select name="estado_civil" id="estado_civil">
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="divorciado">Divorciado</option>
+            </select><br>
+
+
+        <label for="tipo_sanguineo">Tipo Sanguíneo:</label>
+        <input type="text" name="tipo_sanguineo" id="tipo_sanguineo"><br>
+
+        <label for="contacto">Contacto de Emergencia:</label><br>
+        <label for="nombre_emergencia">Nombre:</label>
+        <input type="text" name="nombre_emergencia" id="nombre_emergencia"><br>
+        <label for="contacto_emergencia">Telefono:</label>
+        <input type="text" name="contacto_emergencia" id="contacto_emergencia"><br>
+
+
+        <h2>Historial Dental:</h2>
+        <label for="razon_consulta">¿Por qué asistió a consulta?</label>
+        <textarea type="text" name="razon_consulta" id="razon_consulta"></textarea><br>
+
+        <label for="consulto_profesional">¿Consultó a otro profesional previamente?</label>
+        <input type="radio" name="consulto_profesional" value="Si" id="consulto_profesional_si">
+        <label for="consulto_profesional_si">Sí</label>
+        <input type="radio" name="consulto_profesional" value="No" id="consulto_profesional_no">
+        <label for="consulto_profesional_no">No</label><br>
+
+        <label for="tomo_medicamento">¿Ha tomado algún medicamento?</label>
+        <input type="radio" name="tomo_medicamento" value="Si" id="tomo_medicamento_si">
+        <label for="tomo_medicamento_si">Sí</label>
+        <input type="radio" name="tomo_medicamento" value="No" id="tomo_medicamento_no">
+        <label for="tomo_medicamento_no">No</label><br>
+
+        <label for="nombre_medicamentos">Nombre de los medicamentos:</label>
+        <input type="text" name="nombre_medicamentos" id="nombre_medicamentos"><br>
+
+        <label for="desde_cuando_medicamentos">Desde cuándo los tomó:</label>
+        <input type="text" name="desde_cuando_medicamentos" id="desde_cuando_medicamentos"><br>
+
+        <label for="obtuvo_resultados">¿Obtuvo resultados con los medicamentos?</label>
+        <input type="radio" name="obtuvo_resultados" value="Si" id="obtuvo_resultados_si">
+        <label for="obtuvo_resultados_si">Sí</label>
+        <input type="radio" name="obtuvo_resultados" value="No" id="obtuvo_resultados_no">
+        <label for="obtuvo_resultados_no">No</label><br>
+
+        <label for="sintio_dolor">¿Ha sentido dolor?</label>
+        <input type="radio" name="sintio_dolor" value="Si" id="sintio_dolor_si">
+        <label for="sintio_dolor_si">Sí</label>
+        <input type="radio" name="sintio_dolor" value="No" id="sintio_dolor_no">
+        <label for="sintio_dolor_no">No</label><br>
+
+        <label for="tipo_dolor">Tipo de dolor:</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Suave" id="suave">
+        <label for="suave">Suave</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Moderado" id="moderado">
+        <label for="moderado">Moderado</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Intenso" id="intenso">
+        <label for="intenso">Intenso</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Intermitente" id="intermitente">
+        <label for="intermitente">Intermitente</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Continuo" id="continuo">
+        <label for="continuo">Continuo</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Espontáneo" id="espontaneo">
+        <label for="espontaneo">Espontáneo</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Provocado" id="provocado">
+        <label for="provocado">Provocado</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Al frío" id="al_frio">
+        <label for="al_frio">Al frío</label>
+        <input type="checkbox" name="tipo_dolor[]" value="Al calor" id="al_calor">
+        <label for="al_calor">Al calor</label><br>
+
+        <label for="ubicacion_dolor">En dónde siente el dolor (especificar):</label>
+        <input type="text" name="ubicacion_dolor" id="ubicacion_dolor"><br>
+
+        <label for="sufrio_golpe_dientes">¿Ha sufrido algún golpe en los dientes?</label>
+        <input type="radio" name="sufrio_golpe_dientes" value="Si" id="sufrio_golpe_dientes_si">
+        <label for="sufrio_golpe_dientes_si">Sí</label>
+        <input type="radio" name="sufrio_golpe_dientes" value="No" id="sufrio_golpe_dientes_no">
+        <label for="sufrio_golpe_dientes_no">No</label>
+
+        <label for="cuando_golpe_dientes">Cuándo:</label>
+        <input type="text" name="cuando_golpe_dientes" id="cuando_golpe_dientes">
+
+        <label for="como_golpe_dientes">Cómo:</label>
+        <textarea type="text" name="como_golpe_dientes" id="como_golpe_dientes"></textarea><br>
+
+        <label for="fracturo_diente">¿Se le fracturó algún diente?</label>
+        <input type="radio" name="fracturo_diente" value="Si" id="fracturo_diente_si">
+        <label for="fracturo_diente_si">Sí</label>
+        <input type="radio" name="fracturo_diente" value="No" id="fracturo_diente_no">
+        <label for="fracturo_diente_no">No</label><br>
+
+        <label for="cual_fracturo_diente">Cuál:</label>
+        <input type="text" name="cual_fracturo_diente" id="cual_fracturo_diente"><br>
+
+        <label for="recibio_tratamiento_fractura">¿Recibió tratamiento?</label>
+        <input type="radio" name="recibio_tratamiento_fractura" value="Si" id="recibio_tratamiento_fractura_si">
+        <label for="recibio_tratamiento_fractura_si">Sí</label>
+        <input type="radio" name="recibio_tratamiento_fractura" value="No" id="recibio_tratamiento_fractura_no">
+        <label for="recibio_tratamiento_fractura_no">No</label><br>
+
+        <label for="cual_tratamiento_fractura">Cuál:</label>
+        <textarea type="text" name="cual_tratamiento_fractura" id="cual_tratamiento_fractura"></textarea><br>
+
+        <label for="dificultad_hablar">¿Tiene dificultad para hablar?</label>
+        <input type="radio" name="dificultad_hablar" value="Si" id="dificultad_hablar_si">
+        <label for="dificultad_hablar_si">Sí</label>
+        <input type="radio" name="dificultad_hablar" value="No" id="dificultad_hablar_no">
+        <label for="dificultad_hablar_no">No</label><br>
+
+        <label for="dificultad_masticar">¿Tiene dificultad para masticar?</label>
+        <input type="radio" name="dificultad_masticar" value="Si" id="dificultad_masticar_si">
+        <label for="dificultad_masticar_si">Sí</label>
+        <input type="radio" name="dificultad_masticar" value="No" id="dificultad_masticar_no">
+        <label for="dificultad_masticar_no">No</label><br>
+
+        <label for="dificultad_abrir_boca">¿Tiene dificultad para abrir la boca?</label>
+        <input type="radio" name="dificultad_abrir_boca" value="Si" id="dificultad_abrir_boca_si">
+        <label for="dificultad_abrir_boca_si">Sí</label>
+        <input type="radio" name="dificultad_abrir_boca" value="No" id="dificultad_abrir_boca_no">
+        <label for="dificultad_abrir_boca_no">No</label><br>
+
+        <label for="dificultad_tragar_alimentos">¿Tiene dificultad para tragar alimentos?</label>
+        <input type="radio" name="dificultad_tragar_alimentos" value="Si" id="dificultad_tragar_alimentos_si">
+        <label for="dificultad_tragar_alimentos_si">Sí</label>
+        <input type="radio" name="dificultad_tragar_alimentos" value="No" id="dificultad_tragar_alimentos_no">
+        <label for="dificultad_tragar_alimentos_no">No</label><br>
+
+        <label for="estado_higiene_bucal">Estado de higiene bucal:</label>
+        <select name="estado_higiene_bucal" id="estado_higiene_bucal">
+                <option value="Muy bien">Muy bien</option>
+                <option value="Bien">Bien</option>
+                <option value="Deficiente">Deficiente</option>
+                <option value="Malo">Malo</option>
+            </select><br>
+
+
+        <h2>Plan de Tratamiento:</h2>
+        <label for="tratamiento_recomendado">Recomendaciones de Tratamiento (separadas por comas):</label>
+        <input type="text" name="tratamiento_recomendado" id="tratamiento_recomendado"><br>
+
+        <label for="costo_tratamiento">Estimación de Costos:</label>
+        <input type="text" name="costo_tratamiento" id="costo_tratamiento"><br>
+
+        <label for="duracion_tratamiento">Duración del Tratamiento:</label>
+        <input type="text" name="duracion_tratamiento" id="duracion_tratamiento"><br>
+
+        <label for="visitas_seguimiento">Visitas de Seguimiento:</label>
+        <textarea name="visitas_seguimiento" id="visitas_seguimiento"></textarea><br>
+
+        <input type="submit" name="register" value="Registrar">
+    </form>
+</body>
+
+</html>
